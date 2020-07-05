@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Data\HoofdCategorie.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\SubCategorie.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\TransactiePosten.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Data\HoofdCategorie.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Data\SubCategorie.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Data\TransactiePosten.dat" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Tools.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Models\HoofdCategorieLijst.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+
+
+</Project>

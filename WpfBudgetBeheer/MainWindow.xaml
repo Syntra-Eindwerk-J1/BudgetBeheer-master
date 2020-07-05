@@ -1,0 +1,205 @@
+﻿<Window x:Class="WpfBudgetBeheer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBudgetBeheer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="475" Width="1000" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False">
+
+    <Grid Height="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--DATAGRID-->
+        <!--Datagrid Border-->
+        <Border Style="{StaticResource RoundedBorder}" Background="White"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            Width="640" Height="325" Margin="10,0,10,0" CornerRadius="5"
+            HorizontalAlignment="left" VerticalAlignment="Top"
+            BorderThickness="1"/>
+
+        <!--Datagrid cells-->
+        <DataGrid x:Name="TransactieGrid" ColumnHeaderStyle="{StaticResource GridHeaderTemplate}" 
+                RowStyle="{StaticResource GridRowTemplate}" BorderThickness="1" BorderBrush="Black"
+                VerticalAlignment="Top" Height="305"  Margin="10,10,0,10" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Hoofdcategorie" Binding="{Binding HoofdCat.Naam}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Subcategorie" Binding="{Binding SubCat.Naam}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum, StringFormat=d, ConverterCulture=en-GB}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Omschrijving" Binding="{Binding Comment}" IsReadOnly="True" Width="200"/>
+                <DataGridTextColumn Header="Debet" Binding="{Binding Debet}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Credit" Binding="{Binding Credit}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--LABELS-->
+        <!--Labels Border-->
+        <Border Style="{StaticResource RoundedBorder}" Background="White"
+            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+            Width="330" Height="325" Margin="10,0,10,0"
+            HorizontalAlignment="left" VerticalAlignment="Top"
+            BorderThickness="1"/>
+
+        <!-- Labels -->
+        <Label x:Name="LabelDate" Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Datum"
+            Width="150" Height="30" Margin="0 10 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+               BorderThickness="2"
+            />
+        <Label x:Name="LabelHoofdCat" Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Hoofdcategorie"
+             Width="150" Height="30" Margin="0 50 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"   
+            />
+        <Label x:Name="LabelSubCat" Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Subcategorie"
+            Width="150" Height="30" Margin="0 90 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+               BorderThickness="2"
+            />
+        <Label x:Name="LabelBedrag" Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Invoer bedrag"
+            Width="150" Height="30" Margin="0 130 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+               BorderThickness="2"
+            />
+        <Label x:Name="LabelCredit"  Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Type transactie"
+            Width="150" Height="30" Margin="0 170 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+               BorderThickness="2"
+            />
+        <Label x:Name="LabelOmschr" Style="{StaticResource RoundedLabel}"
+            Grid.Row="1" Grid.Column="1" Content="Omschrijving"
+            Width="150" Height="60" Margin="0 210 10 0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+               BorderThickness="2"
+            />
+
+        <!-- INVOERVELDEN-->
+        <!-- invoervelden-->
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="30" Margin="0 10 0 0">
+            <DatePicker x:Name="TrDatum"
+                Grid.Row="1" Grid.Column="2"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Width="130" Height="25" Margin="10,0,0,0" BorderThickness="0"
+                SelectedDate="{Binding CurrentTP.Datum, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+            />
+        </Border>
+
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="30" Margin="0 50 0 0">
+            <ComboBox x:Name="ComboHoofdCat" 
+                    Grid.Row="1" Grid.Column="2" 
+                    Width="130" Height="30" Margin="0 0 0 0"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=CurrentTP.HoofdCat,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding HCCollectie,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" 
+                />
+        </Border>
+
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="30" Margin="0 90 0 0">
+            <ComboBox x:Name="ComboSubCat"    
+                    Grid.Row="1" Grid.Column="2" 
+                    Width="130" Height="30"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=CurrentTP.HoofdCat,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding SCCollectie,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" 
+                />
+        </Border>
+
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="30" Margin="0 130 0 0">
+            <TextBox x:Name="TextboxCredit"
+                    Grid.Row="1" Grid.Column="2"  Width="130" Height="30" BorderThickness="0"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Padding="5"
+             />
+        </Border>
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="30" Margin="0 170 0 0">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="LblDebet"  Content="Debet" Grid.Column="0" Margin="5,0,0,0"/>
+                <RadioButton x:Name="BtnDebet" Grid.Column="1" IsChecked="True" VerticalAlignment="Center"/>
+                <Label x:Name="LblCredit"  Content="Credit" Grid.Column="2" Margin="5,0,0,0" />
+                <RadioButton x:Name="BtnCredit"  Grid.Column="3" IsChecked="False" VerticalAlignment="Center" Checked="BtnCredit_Checked"/>
+            </Grid>
+        </Border>
+        <Border Style="{StaticResource RoundedRightBorder}"
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Width="150" Height="60" Margin="0 210 0 0">
+            <TextBox x:Name="TrOmschrijving"
+                    Grid.Row="1" Grid.Column="2"  Width="130" Height="60" BorderThickness="0"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Padding="5" TextWrapping="Wrap"
+                />
+        </Border>
+
+        <!-- BUTTONS-->
+        <!-- Buttons invoer -->
+
+        <Button Grid.Row="1" Grid.Column="1"  Style="{StaticResource RoundButtonTemplate}"
+            x:Name ="ButtonHoofdCat" Content="nieuwe categorie"
+            Width="150" Height="30" Margin="0 285 10 0"  
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+            
+        />
+        <Button Grid.Row="1" Grid.Column="2"  Style="{StaticResource RoundButtonTemplate}"
+            x:Name ="NieuweTransactieButton" Content="invoer leegmaken"
+            Width="150" Height="30"  Margin="0 285 0 0"  
+            HorizontalAlignment="Left" VerticalAlignment="Top" Click="NieuweTransactieButton_Click"
+        />
+
+        <Button Grid.Row="2" Grid.Column="1"  Style="{StaticResource RoundButtonTemplate}"
+            x:Name ="AddTransactieButton" Content="transactie opslaan" Click="AddHCButton_Click"
+            Width="150" Height="30" Margin="0,0,10,0"  
+            HorizontalAlignment="right" VerticalAlignment="Top"
+        />
+        <Button Grid.Row="2" Grid.Column="2"  Style="{StaticResource RoundButtonTemplate}"
+            x:Name="ButtonStop" Content="!broke afsluiten"   Click="ButtonStop_Click"
+            Width="150" Height="30" 
+            HorizontalAlignment="Left" VerticalAlignment="Top" 
+        />
+        <TextBox x:Name="TrDebet" Width="30"  Grid.Column="0" Text="{Binding CurrentTP.Debet}"  FontSize="10" Grid.Row="2" Margin="1" IsReadOnly="False" />
+        <TextBox x:Name="TrCredit" Width="30"   Grid.Column="0" Text="{Binding CurrentTP.Credit}"  FontSize="10" Margin="2" IsReadOnly="False" />
+
+
+        <!-- Deel Afbeelding logo -->
+
+        <Image 
+            Source="Fotos/Logo_klein.png"
+            HorizontalAlignment="Left" Height="51" Grid.Row="2" Grid.Column="0" 
+            VerticalAlignment="Top" Width="135"
+            Margin="10 30 0 0"
+            />
+    </Grid>
+</Window>

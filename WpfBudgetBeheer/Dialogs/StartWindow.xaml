@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfBudgetBeheer.Dialogs.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBudgetBeheer.Dialogs"
+        mc:Ignorable="d"
+        Title="" Height="550" Width="600"
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <Image Source="/Fotos/Logo_klein.png" HorizontalAlignment="Center" 
+               Height="208" Margin="0,50,0,0" Width="370"/>
+        <TextBlock Text="it pays to plan" 
+            FontSize="20" FontFamily="Bahnschrift Light"
+            HorizontalAlignment="Left" Width="130" Margin="350,0,0,0"/>
+        <Button  Style="{StaticResource RoundButtonTemplate}" x:Name="ButtonStart"
+            Content="start !broke"  Click="ButtonStart_Click"
+            Width="250" Height="30" Margin="0,150,0,0" 
+            HorizontalAlignment="Center"     VerticalAlignment="Top"
+        />
+        <Button Style="{StaticResource RoundButtonTemplate}"
+            x:Name="ButtonStop" Content="!broke afsluiten"   Click="ButtonStop_Click"
+            Width="250" Height="30" Margin="0,10,0,0"
+            HorizontalAlignment="Center" VerticalAlignment="Top"
+        />
+    </StackPanel>
+
+</Window>

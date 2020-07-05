@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1001,
+    "tr_datum": "2020-06-16T15:17:40.8181886+02:00",
+    "Comment": "Loon",
+    "DatumString": "16/06/2020",
+    "HoofdCat": {
+      "hc_naam": "Inkomsten",
+      "hc_id": 100
+    },
+    "SubCat": {
+      "sc_id": 101,
+      "sc_naam": "Salarissen"
+    },
+    "Debet": 0,
+    "Credit": 1550.25
+  },
+  {
+    "id": 1002,
+    "tr_datum": "2020-06-16T15:17:40.8232559+02:00",
+    "Comment": "Huur",
+    "DatumString": "16/06/2020",
+    "HoofdCat": {
+      "hc_naam": "Woning",
+      "hc_id": 200
+    },
+    "SubCat": {
+      "sc_id": 201,
+      "sc_naam": "Vaste Kost Woning"
+    },
+    "Debet": 469,
+    "Credit": 0
+  },
+  {
+    "id": 1003,
+    "tr_datum": "2020-06-16T15:17:40.8232959+02:00",
+    "Comment": "Electriciteit",
+    "DatumString": "16/06/2020",
+    "HoofdCat": {
+      "hc_naam": "Onderhoud",
+      "hc_id": 300
+    },
+    "SubCat": {
+      "sc_id": 303,
+      "sc_naam": "Nutsvoorzieningen"
+    },
+    "Debet": 0,
+    "Credit": 40.5
+  },
+  {
+    "id": 1004,
+    "tr_datum": "2020-06-16T15:18:17.2759513+02:00",
+    "Comment": "Internet",
+    "DatumString": "16/06/2020",
+    "HoofdCat": {
+      "hc_naam": "Onderhoud",
+      "hc_id": 300
+    },
+    "SubCat": {
+      "sc_id": 303,
+      "sc_naam": "Nutsvoorzieningen"
+    },
+    "Debet": 0,
+    "Credit": 50
+  },
+  {
+    "id": 1006,
+    "tr_datum": "2020-07-25T00:00:00",
+    "Comment": "syntra",
+    "DatumString": "25/07/2020",
+    "HoofdCat": {
+      "hc_naam": "VrijeTijd",
+      "hc_id": 400
+    },
+    "SubCat": {
+      "sc_id": 403,
+      "sc_naam": "Opleiding"
+    },
+    "Debet": 700,
+    "Credit": 0
+  },
+  {
+    "id": 1007,
+    "tr_datum": "2020-06-21T00:00:00",
+    "Comment": "werf",
+    "DatumString": "21/06/2020",
+    "HoofdCat": {
+      "hc_naam": "Woning",
+      "hc_id": 200
+    },
+    "SubCat": {
+      "sc_id": 203,
+      "sc_naam": "Inrichting woning"
+    },
+    "Debet": 42,
+    "Credit": 0
+  }
+]
